@@ -1,18 +1,22 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
-import Register from './Register'
-
+import { useState } from "react";
+import reactLogo from "./assets/react.svg";
+import viteLogo from "/vite.svg";
+import "./App.css";
+import Register from "./Register";
+import axios from "axios";
+import { UserContextProvider } from "./userContext";
+import Routes from "./Routes";
 
 function App() {
-  const [count, setCount] = useState(0)
-
+  axios.defaults.baseURL = "http://localhost:5000";
+  axios.defaults.withCredentials = true;
   return (
     <>
-      <Register />
+      <UserContextProvider>
+        <Routes />
+      </UserContextProvider>
     </>
-  )
+  );
 }
 
-export default App
+export default App;
